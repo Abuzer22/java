@@ -1,5 +1,5 @@
-public class maxarr { //BRUTE FORCE
-    public static void maxarray(int arr[]){
+public class maxarr { 
+    public static void maxarray(int arr[]){ //BRUTE FORCE
         int currsum = 0;
         int maxsum = Integer.MIN_VALUE;
         for(int i=0;i < arr.length;i++){
@@ -20,8 +20,49 @@ public class maxarr { //BRUTE FORCE
         System.out.println("Maxsum is : "+maxsum);
 
     }
+
+    public static void arrsumprefix(int arr[]){ // PREFIX SUM
+        int currentsum =0;
+        int maximumsum = Integer.MIN_VALUE;
+        int prefix[] = new int[arr.length];
+        prefix[0] = arr[0];
+        //calculate prefix array
+        for(int i=1; i< prefix.length;i++){
+            prefix[i] = prefix[i-1] + arr[i];
+        }
+
+        for(int i=0;i<arr.length; i++){
+            int start =i;   
+            for(int j=i;j<arr.length; j++){
+                int end = j;
+                currentsum = start ==0 ? prefix[end] : prefix[end]-prefix[start -1];
+
+                if(maximumsum < currentsum){
+                    maximumsum =currentsum;
+
+                }
+
+            }
+        }
+        System.out.println("Max sum = " +maximumsum);
+    }
+
+    public static void arrsumKADANalgo(int arr[]){ // KADANE'S ALGORITHM
+        int ms = Integer.MIN_VALUE;
+        int cs = 0;
+
+        for(int i=0; i < arr.length; i++  ){
+            cs+=arr[i];
+            if(cs < 0){
+                cs = 0;
+            }
+            ms = Math.max(cs, ms);
+        }
+        System.out.println("Our max subarray is : " +ms);
+    }
+
     public static void main(String[] args) {
-        int arr[] = {5,10,15,20,25};
-        maxarray(arr);
+        int arr[] = {-2, -3, 4, -1, -2, 1, 5, -3};
+        arrsumprefix(arr);
     }
 }
