@@ -1,5 +1,5 @@
 public class maxarr { 
-    public static void maxarray(int arr[]){ //BRUTE FORCE
+    public static void maxarray(int arr[]){ // red BRUTE FORCE
         int currsum = 0;
         int maxsum = Integer.MIN_VALUE;
         for(int i=0;i < arr.length;i++){
@@ -21,7 +21,7 @@ public class maxarr {
 
     }
 
-    public static void arrsumprefix(int arr[]){ // PREFIX SUM
+    public static void arrsumprefix(int arr[]){ // red PREFIX SUM
         int currentsum =0;
         int maximumsum = Integer.MIN_VALUE;
         int prefix[] = new int[arr.length];
@@ -47,7 +47,7 @@ public class maxarr {
         System.out.println("Max sum = " +maximumsum);
     }
 
-    public static void arrsumKADANalgo(int arr[]){ // KADANE'S ALGORITHM
+    public static void arrsumKADANalgo(int arr[]){ // red KADANE'S ALGORITHM
         int ms = Integer.MIN_VALUE;
         int cs = 0;
 
